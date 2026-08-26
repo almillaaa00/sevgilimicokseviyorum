@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 1 Month 🖤</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Metamorphous&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #050505;
+            color: #d1c7bd;
+            font-family: 'Cinzel', serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Uçuşan Siyah Kalpler ve Yarasalar */
+        .floating-element {
+            position: fixed;
+            top: -50px;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Ana Konteyner */
+        .container {
+            text-align: center;
+            z-index: 10;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .header-title {
+            font-family: 'Metamorphous', cursive;
+            font-size: 2.2rem;
+            color: #8b0000;
+            text-shadow: 0 0 10px #ff000044, 0 0 20px #000;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        /* Mektup ve Zarf Tasarımı */
+        .envelope-wrapper {
+            background-color: #121212;
+            border: 2px solid #330000;
+            box-shadow: 0 0 25px rgba(139, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 30px 20px;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .wax-seal-btn {
+            background: linear-gradient(145deg, #8b0000, #4a0000);
+            color: #e0e0e0;
+            border: 1px solid #ff3333;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-family: 'Cinzel', serif;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.6);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .wax-seal-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+        }
+
+        /* Mektup İçeriği */
+        .letter-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 1s ease-in-out, opacity 0.8s ease-in-out;
+            text-align: left;
+            line-height: 1.8;
+            font-size: 0.95rem;
+            color: #cccccc;
+            background: #0a0a0a;
+            border-left: 3px solid #8b0000;
+            padding: 0 20px;
+            margin-top: 0;
+        }
+
+        .letter-content.open {
+            max-height: 1000px;
+            opacity: 1;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .letter-content p {
+            margin-bottom: 15px;
+        }
+
+        .signature {
+            text-align: right;
+            color: #8b0000;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="header-title">🦇 Happy 1st Month 🦇</h1>
+        <p class="subtitle">To the brightest light in my darkness...</p>
+
+        <div class="envelope-wrapper">
+            <button class="wax-seal-btn" onclick="toggleLetter()">Open Sealed Letter 🖤</button>
+            
+            <!-- MEKTUP METNİ BURADA YER ALIYOR -->
+            <div class="letter-content" id="letter">
+                <p>My love,</p>
+                <p>Bro I still can't believe it's been a whole month with you, like where did the time even go 😭 You've made me so happy and I swear every moment with you means so much to me.</p>
+                <p>I'm really glad I met you and I hope we stay like this for a long, long time. You're genuinely so special to me and I love having you in my life.</p>
+                <p>Happy one month baby! <3 🖤🦇</p>
+                <p class="signature">— Yours forever</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mektubu Açma/Kapama Fonksiyonu
+        function toggleLetter() {
+            const letter = document.getElementById('letter');
+            const btn = document.querySelector('.wax-seal-btn');
+            
+            if (letter.classList.contains('open')) {
+                letter.classList.remove('open');
+                btn.innerText = 'Open Sealed Letter 🖤';
+            } else {
+                letter.classList.add('open');
+                btn.innerText = 'Close Letter 🦇';
+            }
+        }
+
+        // Arka Planda Uçuşan Yarasa ve Siyah Kalp Efekti
+        const icons = ['🖤', '🦇', '🕷️', '🖤', '🥀'];
+        
+        function createFloatingElement() {
+            const element = document.createElement('div');
+            element.classList.add('floating-element');
+            element.innerText = icons[Math.floor(Math.random() * icons.length)];
+            element.style.left = Math.random() * 100 + 'vw';
+            element.style.animationDuration = Math.random() * 3 + 4 + 's';
+            element.style.fontSize = Math.random() * 15 + 15 + 'px';
+            
+            document.body.appendChild(element);
+
+            setTimeout(() => {
+                element.remove();
+            }, 7000);
+        }
+
+        setInterval(createFloatingElement, 400);
+    </script>
+</body>
+</html>
+
